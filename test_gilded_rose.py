@@ -24,6 +24,18 @@ class GildedRoseTest(unittest.TestCase):
 
     def test_normal_item_on_sell_date(self):
         # TODO: Write test for normal item when sell_in == 0 (degrades twice overall)
+        
+        # arrange
+        items = [Item("Nice flower", sell_in=1, quality=5)]
+        shop = GildedRose(items)
+
+        # act
+        shop.update_quality()
+        
+        # assert
+        self.assertEqual(items[0].sell_in, 0)
+        self.assertEqual(items[0].quality, 4)
+
         pass
 
     def test_aged_brie_increases_quality(self):
